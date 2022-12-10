@@ -117,7 +117,11 @@ func main() {
 	max := computeMax(elves)
 	fmt.Println("Part 1, Max:", max)
 
-	n := 3
+	n := 1
 	topSum := topNSum(elves, n)
+	fmt.Printf("Part 1, Top %d Sum: %d\n", n, topSum)
+
+	n = 3
+	topSum = topNSum(elves, n)
 	fmt.Printf("Part 2, Top %d Sum: %d\n", n, topSum)
 }
