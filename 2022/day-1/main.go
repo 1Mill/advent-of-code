@@ -16,6 +16,24 @@ func check(err error) {
 	}
 }
 
+func computeMax(elves Elves) int {
+	maxCalories := 0
+
+	for _, elf := range elves {
+		sum := 0
+
+		for _, calories := range elf {
+			sum += calories
+		}
+
+		if maxCalories < sum {
+			maxCalories = sum
+		}
+	}
+
+	return maxCalories
+}
+
 func fetchElves(file string) Elves {
 	// * Import file as bytes
 	data, err := os.ReadFile(file)
@@ -49,24 +67,6 @@ func fetchElves(file string) Elves {
 	}
 
 	return elves
-}
-
-func computeMax(elves Elves) int {
-	maxCalories := 0
-
-	for _, elf := range elves {
-		sum := 0
-
-		for _, calories := range elf {
-			sum += calories
-		}
-
-		if maxCalories < sum {
-			maxCalories = sum
-		}
-	}
-
-	return maxCalories
 }
 
 func main() {
