@@ -20,11 +20,7 @@ func computeMax(elves Elves) int {
 	maxCalories := 0
 
 	for _, elf := range elves {
-		sum := 0
-
-		for _, calories := range elf {
-			sum += calories
-		}
+		sum := sumElf(elf)
 
 		if maxCalories < sum {
 			maxCalories = sum
@@ -67,6 +63,14 @@ func fetchElves(file string) Elves {
 	}
 
 	return elves
+}
+
+func sumElf(elf Elf) int {
+	sum := 0
+	for _, calories := range elf {
+		sum += calories
+	}
+	return sum
 }
 
 func topNMax(elves Elves, n int) int {
