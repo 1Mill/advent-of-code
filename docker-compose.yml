@@ -1,0 +1,8 @@
+version: '3'
+
+services:
+  golang:
+    image: golang:1
+    volumes:
+      - $DIR:/app
+    working_dir: /app
