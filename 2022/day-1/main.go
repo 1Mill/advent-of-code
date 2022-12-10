@@ -3,11 +3,11 @@ package main
 import (
 	"fmt"
 	"os"
+	"strconv"
 	"strings"
 )
 
-type Calorie int
-type Elf []Calorie
+type Elf []int
 type Elves []Elf
 
 func check(err error) {
@@ -33,20 +33,24 @@ func main() {
 	groups := strings.Split(contnet, "\n\n")
 	elves := make(Elves, len(groups))
 
-	// for _, group := range groups {
-	// for j, line := range strings.Split(group, "\n") {
-	// 	elf := make([]int, len())
+	for i, group := range groups {
+		lines := strings.Split(group, "\n")
+		elf := make(Elf, len(lines))
 
-	// 	if line == "" {
-	// 		continue
-	// 	}
+		for j, line := range lines {
+			if line == "" {
+				continue
+			}
 
-	// 	num, err := strconv.Atoi(line)
-	// 	check(err)
+			num, err := strconv.Atoi(line)
+			check(err)
 
-	// 	elves[i][j] = num
-	// }
-	// }
+			elf[j] = num
+		}
 
+		elves[i] = elf
+	}
+
+	fmt.Println("\n")
 	fmt.Println(elves)
 }
