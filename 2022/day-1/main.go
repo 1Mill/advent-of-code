@@ -16,10 +16,7 @@ func check(err error) {
 	}
 }
 
-func main() {
-	file := "./example.txt"
-	// file := "./input.txt"
-
+func fetchElves(file string) Elves {
 	// * Import file as bytes
 	data, err := os.ReadFile(file)
 	check(err)
@@ -50,6 +47,15 @@ func main() {
 
 		elves[i] = elf
 	}
+
+	return elves
+}
+
+func main() {
+	file := "./example.txt"
+	// file := "./input.txt"
+
+	elves := fetchElves(file)
 
 	fmt.Println("\n")
 	fmt.Println(elves)
