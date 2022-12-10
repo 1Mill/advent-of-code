@@ -109,8 +109,8 @@ func topNMax(elves Elves, n int) int {
 }
 
 func main() {
-	file := "./example.txt"
-	// file := "./input.txt"
+	// file := "./example.txt"
+	file := "./input.txt"
 
 	elves := fetchElves(file)
 
