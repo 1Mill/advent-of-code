@@ -10,6 +10,20 @@ import (
 type Elf []int
 type Elves []Elf
 
+func addTop(tops []int, i, num int) []int {
+	// * Insert empty value at index
+	// * [1, 2, 3, ____, 4, 5, 6]
+	newTops := append(tops[:i+1], tops[i:]...)
+
+	// * Assign value at index to given number
+	// * [1, 2, 3, 8080, 4, 5, 6]
+	newTops[i] = num
+
+	// * Reduce array with original length
+	// * [1, 2, 3, 8080, 4, 5]
+	return newTops[:len(tops)]
+}
+
 func check(err error) {
 	if err != nil {
 		panic(err)
@@ -74,12 +88,23 @@ func sumElf(elf Elf) int {
 }
 
 func topNMax(elves Elves, n int) int {
-	top := make([]int, n)
+	tops := make([]int, n)
+
+	for _, elf := range elves {
+		num := sumElf(elf)
+		for j, val := range tops {
+			if num > val {
+				tops = addTop(tops, j, num)
+				break
+			}
+		}
+	}
 
 	sum := 0
-	for _, v := range top {
+	for _, v := range tops {
 		sum += v
 	}
+
 	return sum
 }
 
@@ -94,5 +119,5 @@ func main() {
 
 	n := 3
 	topNMax := topNMax(elves, n)
-	fmt.Println("Part 2, Top 3 Sum:", topNMax)
+	fmt.Printf("Part 2, Top %d Sum: %d\n", n, topNMax)
 }
