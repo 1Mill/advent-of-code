@@ -53,12 +53,11 @@ func fetchElves(file string) Elves {
 	contnet := string(data)
 
 	// * Split string by double new lines to get elf sub-strings
-	// * Split elf sub-strings by new lines
-	// * Convert lines to numbers
 	groups := strings.Split(contnet, "\n\n")
 	elves := make(Elves, len(groups))
 
 	for i, group := range groups {
+		// * Split content group by new lines to get elf calories
 		lines := strings.Split(group, "\n")
 		elf := make(Elf, len(lines))
 
@@ -67,6 +66,7 @@ func fetchElves(file string) Elves {
 				continue
 			}
 
+			// * Convert string to number
 			num, err := strconv.Atoi(line)
 			check(err)
 
