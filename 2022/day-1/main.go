@@ -19,7 +19,7 @@ func addTop(tops []int, i, num int) []int {
 	// * [1, 2, 3, 8080, 4, 5, 6]
 	newTops[i] = num
 
-	// * Reduce array with original length
+	// * Return array with original length, dropping the last item
 	// * [1, 2, 3, 8080, 4, 5]
 	return newTops[:len(tops)]
 }
