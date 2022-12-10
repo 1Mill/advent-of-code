@@ -87,7 +87,7 @@ func sumElf(elf Elf) int {
 	return sum
 }
 
-func topNMax(elves Elves, n int) int {
+func topNSum(elves Elves, n int) int {
 	tops := make([]int, n)
 
 	for _, elf := range elves {
@@ -109,8 +109,8 @@ func topNMax(elves Elves, n int) int {
 }
 
 func main() {
-	// file := "./example.txt"
-	file := "./input.txt"
+	file := "./example.txt"
+	// file := "./input.txt"
 
 	elves := fetchElves(file)
 
@@ -118,6 +118,6 @@ func main() {
 	fmt.Println("Part 1, Max:", max)
 
 	n := 3
-	topNMax := topNMax(elves, n)
-	fmt.Printf("Part 2, Top %d Sum: %d\n", n, topNMax)
+	topSum := topNSum(elves, n)
+	fmt.Printf("Part 2, Top %d Sum: %d\n", n, topSum)
 }
